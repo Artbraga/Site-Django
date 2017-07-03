@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block container %}
+                <div class="jumbotron">
+                    <h3>Especialização em Instrumentação Cirúrgica</h3>
+                </div>
+                <div>
+                    <h3>Descrição do curso</h3>
+                    <h5 class="text-justify">A Especialização Técnica de nível Médio em Instrumentação Cirúrgica compõem o itinerário formativo da Habilitação Técnica de Nível Médio em Enfermagem, Eixo Tecnológico Saúde e Estética, do Catálogo Nacional de Cursos Técnicos.
+                        Com o objetivo de atualizar o perfil profissional de conclusão do egresso desta especialização técnica de nível médio,vemos a oferecer um conjunto de experiências teóricas e práticas em sintonia com as ações ligadas ao segmento da Enfermagem e ao campo de trabalho dos profissionais de Instrumentação Cirúrgica.</h5>
+                    <h5>O curso tem duração de 10 meses, sendo 4 meses de teoria e 6 meses de estágio.</h5>
+                <h5>Nossos estágios são de segunda a sexta no <strong>Hospital Municipal Jesus</strong> e no <strong>Hospital Municipal Piedade</strong>.</h5>
+                </div>
+                <div>
+                    <h3>Novas Turmas</h3>
+                    <a href="{% url 'home' %}" class=" btn btn-default">Veja na nossa página inicial</a>
+                </div>
+                <div>
+                    <h3>Valores</h3>
+                    <h5 class="text-justify">Matrícula: R$ 100,00</h5>
+                    <h5 class="text-justify">Mensalidade: 10 x R$ 260,00</h5>
+                </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block container %}
+            <div class="jumbotron">
+                <h3>Técnico de Enfermagem</h3>
+            </div>
+            <div>
+                <h3>Descrição do curso</h3>
+                <h5 class="text-justify">
+                    O Técnico em Enfermagem presta assistência por meio de ações de enfermagem garantindo a segurança de indivíduos e/ou grupos sociais, nos diferentes níveis de atenção a saúde, em todo ciclo vital e em diferentes graus de complexidade. O campo profissional é amplo, incluindo atendimento domiciliar e empresarial, pré-hospitalar, hospitalar, clínicas, redes ambulatoriais, unidades básicas de saúde, consultórios médicos, programas governamentais de saúde, apoio diagnóstico, abrigo e repouso, dentre outros, em todos os níveis de assistência e especialidades, sob a supervisão do Enfermeiro.
+                </h5>
+                <h5>O curso tem duração de 24 meses, sendo aproximadamente 12 meses de teoria e 600 horas de estágio.</h5>
+                <h5>Nossos estágios são de segunda a domingo no <strong>Hospital Municipal Jesus</strong> e no <strong>Hospital Municipal Piedade</strong> e <strong>Instituto Philippe Pinel</strong>.</h5>
+            </div>
+            <div>
+                <h3>Novas Turmas</h3>
+                <a href="{% url 'home' %}" class=" btn btn-default">Veja na nossa página inicial</a>
+            </div>
+            <div>
+                <h3>Valor</h3>
+                <h5 class="text-justify">Matrícula: R$ 100,00</h5>
+                <h5 class="text-justify">Mensalidade: 24 x R$ 330,00</h5>
+            </div>
+ {% endblock %}
