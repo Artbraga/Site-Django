@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .forms import ContatoCurso
+from ..contatos.models import Contato
+from ..turmas.models import Turmas
+
+from Trabalho.contatos.forms import ContatoCurso
+
 
 def home(request):
-    return render(request, 'home.html', {'titulo': 'Home'})
+    turmas = Turmas.objects.all()
+    return render(request, 'home.html', {'titulo': 'Home', 'turmas': turmas})
 
 def contato(request):
     context = {}
@@ -12,6 +16,8 @@ def contato(request):
         print(form.errors)
         if form.is_valid():
             print("oi")
+            contato = Contato(nome=form.cleaned_data["name"], email=form.cleaned_data["email"], assunto=form.cleaned_data["assunto"], mensagem=form.cleaned_data["mensagem"])
+            contato.save()
             context['valido'] = True
             form = ContatoCurso()
     else:

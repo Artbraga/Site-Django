@@ -13,6 +13,7 @@ class Turmas(models.Model):
     def __str__(self):
         return '%s-%s' % (self.nome, self.data_inicio.strftime("%d/%m/%y"))
 
+
 # turmass = []
 # turmass.append(Turmas(nome="Técnico de Enfermagem", dia="Sábado de 8:00 às 13:00",data_inicio="2017-02-04"))
 # turmass.append(Turmas(nome="Técnico de Enfermagem", dia="Sábado de 8:00 às 13:00",data_inicio="2017-02-04"))

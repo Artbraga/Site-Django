@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody id="turmas">
-                    {% for curso in turmas.models.Turmas.get_queryset.all %}
+                    {% for curso in turmas %}
                         <tr>
                         <td>{{curso.nome}}</td>
                         <td>{{curso.dia}}</td>

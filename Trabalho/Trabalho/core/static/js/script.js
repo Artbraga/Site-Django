@@ -28,6 +28,9 @@ function compararData(){
 
 }
 function compare(date1, date2){
+    data = new Date(date2);
+    lista2 = data.toDateString();
+    console.log(lista2);
     var lista1 = date1.split("/");
     var lista2 = date2.split("/");
     for(i = 2; i >= 0 ; i--){
