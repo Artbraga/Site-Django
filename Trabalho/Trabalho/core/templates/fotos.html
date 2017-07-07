@@ -8,96 +8,37 @@
             </div>
             <h2>Instalações e Equipamentos</h2>
             <div class="row">
+                {% for foto in instalacoes %}
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/sala.jpg' %}" alt="Sala de aula">
+                        {% with 'images/'|add:foto.referencia|add:'/'|add:foto.nomeArquivo as image_static %}
+                            <img class="img-rounded img-responsive center-block" src="{% static image_static %}" alt={{foto.descricao}}>
+                        {% endwith %}
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/boneco.jpg' %}" alt="Boneco de massagem cardíaca">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/boneco0.jpg' %}" alt="Boneco de massagem cardíaca">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/boneco1.jpg' %}" alt="Boneco anatômico">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/boneco2.jpg' %}" alt="Boneco anatômico">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/boneco3.jpg' %}" alt="Boneco anatômico">
-                    </div>
-                </div>
-            </div>
+                {% endfor %}
             <div class="row">
                 <h2>Técnico de Enfermagem</h2>
+                {% for foto in enfermagem %}
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/alunos.jpg' %}" alt="Alunos">
+                        {% with 'images/'|add:foto.referencia|add:'/'|add:foto.nomeArquivo as image_static %}
+                            <img class="img-rounded img-responsive center-block" src="{% static image_static %}" alt={{foto.descricao}}>
+                        {% endwith %}
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/alunos1.jpg' %}" alt="Alunos">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/enfermagem/alunos2.jpg' %}" alt="Alunos">
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="row">
                 <h2>Especialização em Instrumentação Cirúrgica</h2>
+                {% for foto in instrumentacao %}
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/bolo.jpg' %}" alt="Bolo de Instrumentação Cirúrgica">
+                        {% with 'images/'|add:foto.referencia|add:'/'|add:foto.nomeArquivo as image_static %}
+                            <img class="img-rounded img-responsive center-block" src="{% static image_static %}" alt={{foto.descricao}}>
+                        {% endwith %}
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/alunos.jpg' %}" alt="Alunos de Instrumentação Cirúrgica">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/alunos2.jpg' %}" alt="Alunos de Instrumentação Cirúrgica">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/cirurgia.jpg' %}" alt="Alunos em cirurgia">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/cirurgia1.jpg' %}" alt="Alunos em cirurgia">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/cirurgia2.jpg' %}" alt="Alunos em cirurgia">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/cirurgia3.jpg' %}" alt="Alunos em cirurgia">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail">
-                        <img class="img-rounded img-responsive center-block" src="{% static 'images/instrumentacao/cirurgia4.jpg' %}" alt="Alunos em cirurgia">
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 {% endblock %}

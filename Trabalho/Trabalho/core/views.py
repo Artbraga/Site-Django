@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from ..contatos.models import Contato
 from ..turmas.models import Turmas
+from ..imagens.models import Imagem
 
 from Trabalho.contatos.forms import ContatoCurso
 
@@ -22,8 +23,8 @@ def contato(request):
             form = ContatoCurso()
     else:
         form = ContatoCurso()
-    context['titulo'] = 'Contato',
-    context['form']= form
+    context['titulo'] = 'Contato'
+    context['form'] = form
     return render(request, 'contato.html', context)
 
 def enfermagem(request):
@@ -36,7 +37,13 @@ def livres(request):
     return render(request, 'livres.html', {'titulo': 'Cursos Livres'})
 
 def fotos(request):
-    return render(request, 'fotos.html', {'titulo': 'Galeria de Fotos'})
+    context = {}
+    context['instalacoes'] = Imagem.objects.filter(referencia='instalacoes')
+    context['enfermagem'] = Imagem.objects.filter(referencia='enfermagem')
+    context['instrumentacao'] = Imagem.objects.filter(referencia='instrumentacao')
+    context['titulo'] = 'Galeria de Fotos'
+    print(context['instalacoes'])
+    return render(request, 'fotos.html', context)
 
 def mapa(request):
     return render(request, 'mapa.html', {'titulo': 'Mapa'})

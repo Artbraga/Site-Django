@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'Trabalho.core',
     'Trabalho.turmas',
-    'Trabalho.contatos'
+    'Trabalho.contatos',
+    'Trabalho.imagens',
 ]
 
 MIDDLEWARE = [
