@@ -7,19 +7,53 @@
         {% if valido %}
             <p>Formulário enviado com sucesso</p>
         {% endif %}
+
+        {% if flag == "deletado" %}
+            <p>Contato deletado com sucesso</p>
+        {% endif %}
         <div class="col-md-8">
             <h3>Escreva-nos uma mensagem</h3>
             <form method="post">
                 {% csrf_token %}
                 <fieldset>
-                {% for field in form %}
+                {% for field in formContato %}
                     <div class="form-group">
                         {{field.label_tag}}
                         {{field}}
+                        {% if field.errors %}
+                            <ul class="list-group">
+                            {% for erro in field.errors %}
+                                <li class="list-group-item list-group-item-danger">{{ erro }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                 {% endfor %}
                 </fieldset>
-                <button class="btn btn-primary" type="submit">Enviar</button>
+                {% if flag == "encontrado" %}
+                    <button class="btn btn-primary" type="submit" name="editar">Editar</button>
+                    <button class="btn btn-primary" type="submit" name="deletar">Deletar</button>
+                {% else %}
+                    <button class="btn btn-primary" type="submit" name="enviar">Enviar</button>
+                {% endif %}
+            </form>
+            <h3>Altere a sua última mensagem</h3>
+            <form method="post">
+                {% csrf_token %}
+                <fieldset>
+                    {% for field in formAlteracao.visible_fields %}
+                    <div class="form-group">
+                        {{field.label_tag}}
+                        {{field}}
+                        {% if flag == "naoEncontrado" %}
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-danger">Mensagem não encontrada</li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </fieldset>
+                <button class="btn btn-primary" type="submit" name="recuperar">Editar</button>
             </form>
         </div>
         <div class="col-md-4">

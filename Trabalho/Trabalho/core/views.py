@@ -4,6 +4,7 @@ from ..turmas.models import Turmas
 from ..imagens.models import Imagem
 
 from Trabalho.contatos.forms import ContatoCurso
+from Trabalho.contatos.forms import EditarContato
 
 
 def home(request):
@@ -13,18 +14,60 @@ def home(request):
 def contato(request):
     context = {}
     if request.method == 'POST':
-        form = ContatoCurso(request.POST)
-        print(form.errors)
-        if form.is_valid():
-            print("oi")
-            contato = Contato(nome=form.cleaned_data["name"], email=form.cleaned_data["email"], assunto=form.cleaned_data["assunto"], mensagem=form.cleaned_data["mensagem"])
-            contato.save()
-            context['valido'] = True
-            form = ContatoCurso()
+        if 'enviar' in request.POST:
+            formContato = ContatoCurso(request.POST)
+            if formContato.is_valid():
+                contato = Contato(nome=formContato.cleaned_data["nome"], email=formContato.cleaned_data["email"], assunto=formContato.cleaned_data["assunto"], mensagem=formContato.cleaned_data["mensagem"])
+                contato.save()
+                context['valido'] = True
+                formContato = ContatoCurso()
+            formAlteracao = EditarContato()
+        if 'recuperar' in request.POST:
+            formAlteracao = EditarContato(request.POST)
+            if formAlteracao.is_valid():
+                lista = Contato.objects.filter(email=formAlteracao.cleaned_data["emailAlteracao"])
+                if lista:
+                    last = lista[lista.count() - 1]
+                    formAlteracao = EditarContato()
+                    formContato = ContatoCurso(initial={'nome': last.nome, 'email':last.email, 'assunto':last.assunto, 'mensagem':last.mensagem, 'alteracao':last.id})
+                    context['flag'] = 'encontrado'
+                else:
+                    formContato = ContatoCurso()
+                    context['flag'] = 'naoEncontrado'
+            else:
+                formContato = ContatoCurso()
+        if 'deletar' in request.POST:
+            formContato = ContatoCurso(request.POST)
+            if formContato.is_valid():
+                id = formContato.cleaned_data["alteracao"]
+                instance = Contato.objects.filter(id=id).delete()
+            formContato = ContatoCurso()
+            formAlteracao = EditarContato()
+            context['flag'] = 'deletado'
+        if 'editar' in request.POST:
+            formContato = ContatoCurso(request.POST)
+            if formContato.is_valid():
+                id = formContato.cleaned_data["alteracao"]
+                instance = Contato.objects.get(id=id)
+                instance.nome = formContato.cleaned_data["nome"]
+                instance.email = formContato.cleaned_data["email"]
+                instance.assunto = formContato.cleaned_data["assunto"]
+                instance.mensagem = formContato.cleaned_data["mensagem"]
+                instance.save()
+                context['valido'] = True
+                formContato = ContatoCurso()
+            else:
+                context['flag'] = 'encontrado'
+
+            formAlteracao = EditarContato()
+
+
     else:
-        form = ContatoCurso()
+        formContato = ContatoCurso()
+        formAlteracao = EditarContato()
     context['titulo'] = 'Contato'
-    context['form'] = form
+    context['formContato'] = formContato
+    context['formAlteracao'] = formAlteracao
     return render(request, 'contato.html', context)
 
 def enfermagem(request):
