@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'Trabalho.turmas',
     'Trabalho.contatos',
     'Trabalho.imagens',
+    'Trabalho.cursos_livres',
+    'Trabalho.cursos',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +121,7 @@ USE_L10N = False
 USE_TZ = True
 
 DATE_FORMAT = "d/m/Y"
+TIME_FORMAT = "H:i"
 
 
 # Static files (CSS, JavaScript, Images)

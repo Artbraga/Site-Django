@@ -1,12 +1,12 @@
 from django.conf.urls import url
 from django.contrib import admin
-from Trabalho.core.views import home
-from Trabalho.core.views import contato
-from Trabalho.core.views import enfermagem
-from Trabalho.core.views import instrumentacao
-from Trabalho.core.views import mapa
-from Trabalho.core.views import livres
-from Trabalho.core.views import fotos
+from .core.views import home
+from .core.views import contato
+from .core.views import enfermagem
+from .core.views import instrumentacao
+from .core.views import mapa
+from .core.views import livres
+from .core.views import fotos
 
 
 admin.autodiscover()

@@ -1,33 +1,63 @@
 {% extends 'base.html' %}
 
 {% block container %}
-            <div class="jumbotron">
-                <h3>Quem Somos</h3>
-            </div>
-            <h5 class="text-justify">Somos uma instituição de ensino preocupada com o futuro do nosso país. Buscamos formar profissionais competentes em suas áreas
-            e temos o compromisso de oferecer o melhor ensino para nossos alunos<br><br>
-            Fundado em 2014 o Curso CTEP surgiu a partir do sonho de uma educadora de formar profissionais capazes na área da saúde.</h5>
-            <hr>
-            <div class="jumbotron">
-                <h3>Calendário de Turmas</h3>
-            </div>
-            <table class="table table-bordered table-responsive table-striped" style="border: 2px solid black;">
-                <thead>
-                    <tr>
-                        <th>Curso</th>
-                        <th>Dia(s) da semana</th>
-                        <th>Data de início</th>
-                        <th>Disponível para matrícula</th>
-                    </tr>
-                </thead>
-                <tbody id="turmas">
-                    {% for curso in turmas %}
-                        <tr>
-                        <td>{{curso.nome}}</td>
-                        <td>{{curso.dia}}</td>
-                        <td>{{curso.data_inicio}}</td>
-                        <td></td>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div class="jumbotron">
+        <h3>Quem Somos</h3>
+    </div>
+    <h5 class="text-justify">Somos uma instituição de ensino preocupada com o futuro do nosso país. Buscamos formar profissionais competentes em suas áreas
+    e temos o compromisso de oferecer o melhor ensino para nossos alunos<br><br>
+    Fundado em 2014 o Curso CTEP surgiu a partir do sonho de uma educadora de formar profissionais capazes na área da saúde.</h5>
+    <hr>
+    <div class="jumbotron">
+        <h3>Calendário de Turmas</h3>
+    </div>
+    <table class="table table-bordered table-responsive table-striped" style="border: 2px solid black;">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Dia(s) da semana</th>
+                <th>Data de início</th>
+                <th>Disponível para matrícula</th>
+            </tr>
+        </thead>
+        <tbody id="turmas">
+            {% for curso in turmas %}
+                <tr>
+                    <td>{{curso.nome}}</td>
+                    <td>{{curso.dia}}</td>
+                    <td>{{curso.data_inicio}}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="jumbotron">
+        <h3>Cursos Livres de {{ mes }}</h3>
+    </div>
+    <table class="table table-bordered table-responsive table-striped" style="border: 2px solid black;">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Data</th>
+                <th>Dia da semana</th>
+                <th>Horário</th>
+                <th>Pagseguro</th>
+            </tr>
+        </thead>
+        <tbody id="turmas">
+            {% for curso in cursos_livres %}
+                <tr>
+                    <td>{{curso.nome}}</td>
+                    <td>{{curso.data}}</td>
+                    <td>{{curso.data | date:"l"}}</td>
+                    <td>{{curso.hora_inicio}} até {{curso.hora_fim}}</td>
+                    <td>
+                        {% autoescape off%}
+                            {{curso.pagseguro}}
+                        {% endautoescape %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

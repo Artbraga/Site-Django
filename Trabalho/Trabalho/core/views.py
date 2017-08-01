@@ -2,14 +2,18 @@ from django.shortcuts import render
 from ..contatos.models import Contato
 from ..turmas.models import Turmas
 from ..imagens.models import Imagem
+from ..cursos_livres.models import CursosLivres
 
-from Trabalho.contatos.forms import ContatoCurso
-from Trabalho.contatos.forms import EditarContato
+from ..contatos.forms import ContatoCurso
+from ..contatos.forms import EditarContato
+from .models import Utilidades
 
 
 def home(request):
     turmas = Turmas.objects.all()
-    return render(request, 'home.html', {'titulo': 'Home', 'turmas': turmas})
+    cursos_livres = CursosLivres.objects.all()
+    mes = Utilidades.objects.filter(atributo='mes').values('valor')[0]['valor']
+    return render(request, 'home.html', {'titulo': 'Home', 'turmas': turmas, 'cursos_livres': cursos_livres, 'mes':mes})
 
 def contato(request):
     context = {}
